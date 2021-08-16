@@ -31,7 +31,7 @@
                 <!-- Added  if statement... -->
                 <?php if (isset($post['topic']['name'])): ?>
                     <a 
-                        href="<?php echo BASE_URL . 'filteredposts.php?topic=' . $post['topic']['id'] ?>"
+                        href="<?php echo BASE_URL . '/filteredposts.php?topic=' . $post['topic']['id'] ?>"
                         class="btn category">
                         <?php echo $post['topic']['name'] ?>
                     </a>

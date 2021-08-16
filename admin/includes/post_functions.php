@@ -35,6 +35,8 @@ function getAllPosts()
 	}
 	return $final_posts;
 }
+
+
 // get the author/username of a post
 function getPostAuthorById($user_id)
 {
@@ -202,6 +204,7 @@ function createPost($request_values)
 if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
 	$message = "";
 	if (isset($_GET['publish'])) {
+		// var_dump();
 		$message = "Post published successfully";
 		$post_id = $_GET['publish'];
 	} else if (isset($_GET['unpublish'])) {

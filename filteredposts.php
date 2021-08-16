@@ -7,10 +7,12 @@
 	if (isset($_GET['topic'])) {
 		$topic_id = $_GET['topic'];
 		$posts = getPublishedPostsByTopic($topic_id);
+		// var_dump($posts);
 	}
 ?>
-    <title> Blog | FilteredPosts </title>
+    <title> Blog | Filtered Posts </title>
 </head>
+
 <body>
 <div class="container">
 <!-- Navbar -->
@@ -25,6 +27,7 @@
 	<?php foreach ($posts as $post): ?>
 		<div class="post" style="margin-left: 0px;">
 			<img src="<?php echo BASE_URL . '/static/images/' . $post['image']; ?>" class="post_image" alt="">
+
 			<a href="singlepost.php?post-slug=<?php echo $post['slug']; ?>">
 				<div class="post_info">
 					<h3><?php echo $post['title'] ?></h3>

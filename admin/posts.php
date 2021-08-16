@@ -21,7 +21,7 @@
 			<?php include(ROOT_PATH . '/includes/messages.php') ?>
 
 			<?php if (empty($posts)): ?>
-				<h1 style="text-align: center; margin-top: 20px;">No posts in the database.</h1>
+				<h1 style="text-align: center; margin-top: 20px;">No Posts in the database.</h1>
 			<?php else: ?>
 				<table class="table">
 						<thead>
@@ -40,13 +40,15 @@
 					<?php foreach ($posts as $key => $post): ?>
 						<tr>
 							<td><?php echo $key + 1; ?></td>
-							<td><?php echo $post['author']; ?></td>
+							
 							<td>
 								<a 	target="_blank"
 								href="<?php echo BASE_URL . 'singlepost.php?post-slug=' . $post['slug'] ?>">
 									<?php echo $post['title']; ?>	
 								</a>
 							</td>
+							
+							<td><?php echo $post['author']; ?></td>
 							<td><?php echo $post['views']; ?></td>
 							
 							<!-- Only Admin can publish/unpublish post -->

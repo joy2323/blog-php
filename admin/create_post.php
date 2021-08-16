@@ -45,6 +45,7 @@
 					<?php if ($published == true): ?>
 						<label for="publish">
 							Publish
+							<!-- UnPublish -->
 							<input type="checkbox" value="1" name="publish" checked="checked">&nbsp;
 						</label>
 					<?php else: ?>

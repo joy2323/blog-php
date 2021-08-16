@@ -2,8 +2,8 @@
 session_start();
 
 //connect to the database...
-// $conn = mysqli_connect("localhost", "root", "", "blog-php");
-$conn = mysqli_connect("db4free.net", "lifeblogg2020", "lifeblogg2020", "blogphp");
+$conn = mysqli_connect("localhost", "root", "", "blog-php");
+// $conn = mysqli_connect("db4free.net", "lifeblogg2020", "lifeblogg2020", "blogphp");
 
 
 if (!$conn){
@@ -13,6 +13,12 @@ if (!$conn){
 
 //define global constants
 define('ROOT_PATH', realpath(dirname(__FILE__)));
-define('BASE_URL', 'https://lifeblogg.herokuapp.com/');
+// define('BASE_URL', 'https://lifeblogg.herokuapp.com/');
+
+define('BASE_URL', 'http://blog-php.test/');
+
+
+// 'http://blog-php.test/'
+
 
 ?>

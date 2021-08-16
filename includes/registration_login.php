@@ -104,7 +104,7 @@
 		// bring the global db connect object into function
 		global $conn;
 
-		$val = trim($value); // remove empty space sorrounding string
+		$val = trim($value); // remove empty space surrounding string
 		$val = mysqli_real_escape_string($conn, $value);
 
 		return $val;
