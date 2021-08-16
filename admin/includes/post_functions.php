@@ -201,29 +201,80 @@ function createPost($request_values)
     
 
 // if user clicks the publish post button
-if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
+// if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
+// 	$message = "";
+// 	if (isset($_GET['publish'])) {
+// 		// var_dump();
+// 		$message = "Post published successfully";
+// 		$post_id = $_GET['publish'];
+// 	} else if (isset($_GET['unpublish'])) {
+// 		$message = "Post successfully unpublished";
+// 		$post_id = $_GET['unpublish'];
+// 	}
+// 	togglePublishPost($post_id, $message);
+
+// 	toggleUpPublishPost($post_id, $message);
+// }
+
+
+// if user clicks the Unpublish post button
+if (isset($_GET['unpublish'])) {
+	$message = "";
+	 if (isset($_GET['unpublish'])) {
+		$message = "Post successfully unpublished";
+		$post_id = $_GET['unpublish'];
+	}
+
+	toggleUnpublishPost($post_id, $message);
+}
+
+
+// if user clicks the publish post button
+if (isset($_GET['publish'])) {
 	$message = "";
 	if (isset($_GET['publish'])) {
 		// var_dump();
 		$message = "Post published successfully";
 		$post_id = $_GET['publish'];
-	} else if (isset($_GET['unpublish'])) {
-		$message = "Post successfully unpublished";
-		$post_id = $_GET['unpublish'];
 	}
+
 	togglePublishPost($post_id, $message);
 }
-// delete blog post
+
+
+
+
+
+// Function for Setting changing Unpublished to Published
 function togglePublishPost($post_id, $message)
 {
 	global $conn;
-	$sql = "UPDATE posts SET published=!published WHERE id=$post_id";
+	// $published
+
+	$sql = "UPDATE posts SET published = 1 WHERE id=$post_id";
 	
 	if (mysqli_query($conn, $sql)) {
 		$_SESSION['message'] = $message;
 		header("location: posts.php");
 		exit(0);
 	}
+
+}
+
+// Function for Setting changing Published to UnPublished
+function toggleUnpublishPost($post_id, $message)
+{
+	global $conn;
+	// $unpublished
+
+	$sql = "UPDATE posts SET published = 0 WHERE id=$post_id";
+	
+	if (mysqli_query($conn, $sql)) {
+		$_SESSION['message'] = $message;
+		header("location: posts.php");
+		exit(0);
+	}
+
 }
 
 

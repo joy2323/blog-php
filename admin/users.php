@@ -32,12 +32,14 @@
 				<input type="email" name="email" value="<?php echo $email ?>" placeholder="Email">
 				<input type="password" name="password" placeholder="Password">
 				<input type="password" name="passwordConfirmation" placeholder="Password confirmation">
-				<select name="role">
-					<option value="" selected disabled>Assign role</option>
-					<?php foreach ($roles as $key => $role): ?>
-						<option value="<?php echo $role; ?>"><?php echo $role; ?></option>
-					<?php endforeach ?>
-				</select>
+
+					<select name="role">
+						<option value="" selected disabled>Assign role</option>
+						<?php foreach ($roles as $key => $role): ?>
+							<option value="<?php echo $role; ?>"><?php echo $role; ?></option>
+						<?php endforeach ?>
+					</select>
+
 
 				<!-- if editing user, display the update button instead of create button -->
 				<?php if ($isEditingUser === true): ?> 
@@ -55,7 +57,7 @@
 			<?php include(ROOT_PATH . '/includes/messages.php') ?>
 
 			<?php if (empty($admins)): ?>
-				<h1>No admins in the database.</h1>
+				<h1>No Admins in the Database.</h1>
 			<?php else: ?>
 				<table class="table">
 					<thead>
@@ -72,17 +74,32 @@
 								<?php echo $admin['username']; ?>, &nbsp;
 								<?php echo $admin['email']; ?>	
 							</td>
+							
 							<td><?php echo $admin['role']; ?></td>
-							<td>
-								<a class="fa fa-pencil btn edit"
-									href="users.php?edit-admin=<?php echo $admin['id'] ?>">
-								</a>
-							</td>
-							<td>
-								<a class="fa fa-trash btn delete" 
-								    href="users.php?delete-admin=<?php echo $admin['id'] ?>">
-								</a>
-							</td>
+
+							<?php if ($_SESSION['user']['role'] == "Admin" ): ?>
+								<td>
+									<a class="fa fa-pencil btn edit"
+										href="users.php?edit-admin=<?php echo $admin['id'] ?>">
+									</a>
+								</td>
+								<td>
+									<a class="fa fa-trash btn delete" 
+										href="users.php?delete-admin=<?php echo $admin['id'] ?>">
+									</a>
+								</td>
+
+							<?php elseif ($_SESSION['user']['role'] == "Author" ): ?>
+								<td>
+									<a class="fa fa-pencil btn edit" href="#">
+									</a>
+								</td>
+								<td>
+									<a class="fa fa-trash btn delete"  href="#">
+									</a>
+								</td>
+							<?php endif ?>
+
 						</tr>
 					<?php endforeach ?>
 					</tbody>
